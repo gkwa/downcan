@@ -65,7 +65,7 @@ func run() error {
 		destDir := getExpandedPath(zipFile)
 
 		if _, err := os.Stat(destDir); err == nil {
-			slog.Info("skipping expanding since target exists", "zip", zipFile, "destDir", destDir)
+			slog.Debug("skipping expanding since target exists", "zip", zipFile, "destDir", destDir)
 			continue
 		}
 
@@ -171,7 +171,7 @@ func extractZipFile(zipFilePath, destDir string) error {
 			return fmt.Errorf("error copying %s: %w", target, err)
 		}
 
-		slog.Debug("extracted file", "zip", zipFilePath, "file", target)
+		slog.Info("extracted file", "zip", zipFilePath, "file", target)
 	}
 
 	return nil
